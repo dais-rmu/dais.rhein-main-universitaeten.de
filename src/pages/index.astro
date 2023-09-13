@@ -1,0 +1,202 @@
+---
+import Layout from "../layouts/Layout.astro"
+import { getCollection } from "astro:content"
+import TalkDay from "../components/TalkDay.astro"
+import Icon from "astro-icon"
+import Footer from "../components/Footer.astro"
+
+const now = Date.now()
+const allTalks = (await getCollection("talks")).toSorted(
+  (t1, t2) => t1.data.date.valueOf() - t2.data.date.valueOf(),
+)
+
+const talksByDate: Map<string, typeof allTalks> = new Map()
+
+for (const t of allTalks) {
+  const date = t.data.date.toISOString().slice(0, 10)
+  let list = talksByDate.get(date)
+  if (!list) {
+    list = []
+    talksByDate.set(date, list)
+  }
+  list.push(t)
+}
+
+const dates: Array<string> = Array.from(talksByDate.keys()).toSorted()
+const futureDates = dates.filter((d) => new Date(d).valueOf() >= now)
+const pastDates = dates.filter((d) => new Date(d).valueOf() < now).toReversed()
+---
+
+<Layout title="DAIS RMU Seminar">
+  <main>
+    <section>
+      <p>
+        The <b>Discrete Algorithm Insights Seminar</b> at the <a
+          href="https://www.rhein-main-universitaeten.de/en"
+          >Rhine-Main-Universities</a
+        > is a regular in-person seminar for researchers and students interested
+        in discrete algorithms and related topics, such as graph theory,
+        complexity, and optimization.
+      </p>
+
+      <a
+        class="infobox subscribe"
+        href="https://dlist.server.uni-frankfurt.de/mailman/listinfo/dais"
+      >
+        <Icon name="lucide:mail" class="icon" />
+        <div>
+          Please subscribe to our mailing list to receive reminders and
+          additional information
+        </div>
+      </a>
+
+       Everyone is welcome to attend without registration! If possible, please subscribe
+      to our mailing list so that we have a rough estimate for the number of participants.
+    </section>
+
+    {
+      futureDates.length > 0 && (
+        <section>
+          <h2>Upcoming talks</h2>
+          <div class="days-list">
+            {futureDates.map((d) => (
+              <TalkDay date={d} talks={talksByDate.get(d)} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+    {
+      pastDates.length > 0 && (
+        <section>
+          <h2>Past talks</h2>
+          <div class="days-list">
+            {pastDates.map((d) => (
+              <TalkDay date={d} talks={talksByDate.get(d)} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section>
+      <h2>About</h2>
+       DAIS is organized by the
+      <strong>Consortium on Discrete Algorithm Insights (CoDa Insights)</strong
+      >. The Consortium consists of all interested researchers and students from
+      the Rhine-Main-Universities, and is currently coordinated by the following
+      faculty members:
+      <ul>
+        <li>
+          <a
+            href="https://www.algorithmics.informatik.uni-mainz.de/people/ernst-althaus/"
+            >Prof. Dr. Ernst Althaus</a
+          > (Johannes Gutenberg University Mainz)
+        </li>
+        <li>
+          <a href="https://holgerdell.com">Prof. Dr. Holger Dell</a> (Goethe
+          University Fankfurt)
+        </li>
+        <li>
+          <a
+            href="https://www.mathematik.tu-darmstadt.de/fb/personal/details/pascal_schweitzer.de.jsp"
+            >Prof. Dr. Pascal Schweitzer</a
+          > (TU Darmstadt)
+        </li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+<style>
+  section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  h2 {
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .infobox {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: max-content;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5ex;
+    padding: 0.5rem;
+    border-radius: 20px;
+    transition: ease-in-out 0.5s;
+  }
+  .subscribe {
+    border: 2px solid rgb(111, 111, 0, 20%);
+    background: rgba(255, 255, 0, 33%);
+  }
+  .subscribe:is(:hover, :focus) {
+    border: 2px solid rgb(111, 111, 0, 100%);
+    background: rgba(255, 255, 0, 70%);
+  }
+  .subscribe:is(:hover, :focus) .icon {
+    color: rgb(var(--accent-mainz));
+    animation: jump 1s;
+  }
+
+  .calendar {
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: flex;
+    place-items: center;
+    gap: 0.5ex;
+    padding: 0;
+    margin: 0;
+  }
+  .calendar:is(:hover, :focus) {
+    background: rgba(103, 192, 255, 0.7);
+  }
+  .calendar:is(:hover, :focus) .icon {
+    /* color: rgb(var(--accent-mainz));
+    animation: jump 1s; */
+  }
+  .icon {
+    height: 2rem;
+    transition: ease-in-out 0.5s;
+    position: relative;
+    color: rgb(var(--accent-darmstadt));
+  }
+  .calendar .icon {
+    height: 1.5em;
+  }
+  @keyframes jump {
+    0% {
+      left: 0;
+    }
+    33% {
+      left: 0.3rem;
+    }
+    67% {
+      left: -0.3rem;
+    }
+    100% {
+      left: 0;
+    }
+  }
+  a {
+    color: inherit;
+  }
+  .days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+</style>

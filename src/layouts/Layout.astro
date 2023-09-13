@@ -1,0 +1,55 @@
+---
+import Header from "../components/Header.astro"
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="container">
+      <Header />
+      <slot />
+    </div>
+  </body>
+</html>
+<style is:global>
+  :root {
+    --accent-darmstadt: 134, 136, 139;
+    --accent-frankfurt: 59, 135, 196;
+    --accent-mainz: 214, 54, 66;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent-frankfurt)) 3%,
+      rgb(var(--accent-mainz)) 15%,
+      rgb(var(--accent-darmstadt)) 25%
+    );
+  }
+  html {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+      Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    background-color: #f6f6f6;
+    font-size: 1.16rem;
+    line-height: 1.6;
+  }
+  .container {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+  }
+</style>

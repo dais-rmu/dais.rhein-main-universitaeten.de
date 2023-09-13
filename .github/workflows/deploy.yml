@@ -1,0 +1,43 @@
+name: Build and deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: "deploy"
+  cancel-in-progress: true
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Bun install 🔧
+        run: bun install
+
+      - name: Build 🔧
+        run: bun run build
+
+      - name: Deploy to server 🚀
+        id: deploy
+        uses: Pendect/action-rsyncer@v2.0.0
+        env:
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+        with:
+          options: ""
+          ssh_options: ""
+          src: "dist/"
+          dest: "dell-from-github@tcs.uni-frankfurt.de:/var/www/html/dais.rhein-main-universitaeten.de/"
+
+      - name: Display status from deploy
+        run: echo "${{ steps.deploy.outputs.status }}"

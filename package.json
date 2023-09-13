@@ -1,0 +1,30 @@
+{
+  "name": "dais",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write **/*.astro ."
+  },
+  "dependencies": {
+    "astro": "^3.0.12",
+    "astro-icon": "^0.8.1",
+    "ics": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.3.2",
+    "luxon": "^3.4.3",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0"
+  },
+  "prettier": {
+    "semi": false,
+    "plugins": [
+      "prettier-plugin-astro"
+    ]
+  }
+}

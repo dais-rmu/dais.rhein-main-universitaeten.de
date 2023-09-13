@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro"
+import { getCollection, getEntryBySlug } from "astro:content"
+import { printDate, printTime, defaultCampus } from "../utils/talk-utils"
+
+export async function getStaticPaths() {
+  const allTalks = (await getCollection("talks")).toSorted(
+    (t1, t2) => t1.data.date.valueOf() - t2.data.date.valueOf(),
+  )
+  return allTalks.map((t) => ({
+    params: {
+      talk: t.slug,
+    },
+  }))
+}
+
+const { talk: talkSlug } = Astro.params
+const talk = talkSlug && (await getEntryBySlug("talks", talkSlug))
+const date = talk && printDate(talk.data.date)
+const time = talk && printTime(talk.data.date)
+const campus = talk && defaultCampus[talk.data.city]
+---
+
+<Layout title="DAIS RMU Seminar">
+  {
+    talk && (
+      <div class="standalone">
+        <h2>
+          {talk.data.speakerName}
+          {talk.data.speakerAffiliation &&
+            " (" + talk.data.speakerAffiliation + ")"}
+        </h2>
+        {talk.data.title && (
+          <div>
+            <>
+              <strong>Title: {talk.data.title}</strong>
+              <br />
+            </>
+          </div>
+        )}
+        <div>
+          <strong>Date: </strong> {date} at {time}
+        </div>
+        <div>
+          <strong>Location: </strong> {campus}
+          {talk.data.room && <>, {talk.data.room}</>}
+        </div>
+        {talk.body && (
+          <div>
+            <strong>Abstract: </strong> {talk.body}
+          </div>
+        )}
+      </div>
+    )
+  }
+</Layout>

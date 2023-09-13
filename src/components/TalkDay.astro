@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from "astro:content"
+import Talk from "./Talk.astro"
+import { defaultCampus, printDate } from "../utils/talk-utils"
+
+interface Props {
+  date: string
+  talks: Array<CollectionEntry<"talks">> | undefined
+}
+
+const { date, talks } = Astro.props
+const niceDate = printDate(new Date(date))
+const city = talks && talks[0] && talks[0]!.data.city
+const campus = (talks && talks[0]!.data.campus) || (city && defaultCampus[city])
+const room = talks && talks[0] && talks[0]!.data.room
+---
+
+<div class={"talk-day " + (city || "")}>
+  <ul class="talks">
+    <li class="header">
+      <div class="date">{niceDate}</div>
+      <div>&nbsp;at&nbsp;</div>
+      <div class="location">{campus}</div>
+      {room && <div class="room">{room}</div>}
+    </li>
+    {talks && talks.map((t) => <Talk talk={t} />)}
+  </ul>
+</div>
+
+<style>
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+  }
+  .date {
+    font-weight: bold;
+  }
+  .location {
+  }
+  .room {
+    font-weight: normal;
+    flex-basis: 100%;
+  }
+  .talk-day {
+    background-color: rgba(var(--accent-color), 30%);
+    border: 2px solid rgb(var(--accent-color));
+    font-size: 1rem;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .talk-day.darmstadt {
+    --accent-color: var(--accent-darmstadt);
+  }
+  .talk-day.frankfurt {
+    --accent-color: var(--accent-frankfurt);
+  }
+  .talk-day.mainz {
+    --accent-color: var(--accent-mainz);
+  }
+  .talks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
