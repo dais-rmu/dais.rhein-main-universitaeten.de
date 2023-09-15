@@ -6,7 +6,6 @@ const talksCollection = defineCollection({
   schema: z.object({
     speakerName: z.string(),
     speakerAffiliation: z.string().optional(),
-    speakerImageURL: z.string().url().optional(),
     speakerURL: z.string().url().optional(),
     title: z.string().optional(),
     date: z
@@ -18,6 +17,7 @@ const talksCollection = defineCollection({
     city: z.enum(["darmstadt", "frankfurt", "mainz"]),
     campus: z.string().optional(),
     room: z.string().optional(),
+    mapURL: z.string().url().optional(),
   }),
 })
 

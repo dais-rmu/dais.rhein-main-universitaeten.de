@@ -10,37 +10,40 @@ interface Props {
 
 const { date, talks } = Astro.props
 const niceDate = printDate(new Date(date))
-const city = talks && talks[0] && talks[0]!.data.city
-const campus = (talks && talks[0]!.data.campus) || (city && defaultCampus[city])
-const room = talks && talks[0] && talks[0]!.data.room
+const city = talks && talks[0] && talks[0].data.city
+const campus = (talks && talks[0] && talks[0].data.campus) || (city && defaultCampus[city])
+const room = talks && talks[0] && talks[0].data.room
+const mapURL = talks && talks[0] && talks[0].data.mapURL
 ---
 
 <div class={"talk-day " + (city || "")}>
   <ul class="talks">
     <li class="header">
       <div class="date">{niceDate}</div>
-      <div>&nbsp;at&nbsp;</div>
-      <div class="location">{campus}</div>
-      {room && <div class="room">{room}</div>}
+      <div class="campus">{campus}</div>
+      {room && <div class="room">{room}{mapURL && <span>&nbsp;(<a href={mapURL}>show on map</a>)</span>}</div>}
     </li>
     {talks && talks.map((t) => <Talk talk={t} />)}
   </ul>
 </div>
 
 <style>
+  a {
+    color: inherit;
+    transition: all 0.2s ease-in-out;
+  }
+  a:is(:hover, :focus) {
+    background-color: rgba(0,0,0,0.3);
+  }
   .header {
-    display: flex;
-    flex-wrap: wrap;
     padding: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: rgb(var(--accent-color));
+    color: white;
   }
   .date {
     font-weight: bold;
-  }
-  .location {
-  }
-  .room {
-    font-weight: normal;
-    flex-basis: 100%;
+    font-size: 116%;
   }
   .talk-day {
     background-color: rgba(var(--accent-color), 30%);
