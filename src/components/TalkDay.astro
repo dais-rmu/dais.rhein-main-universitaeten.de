@@ -11,7 +11,8 @@ interface Props {
 const { date, talks } = Astro.props
 const niceDate = printDate(new Date(date))
 const city = talks && talks[0] && talks[0].data.city
-const campus = (talks && talks[0] && talks[0].data.campus) || (city && defaultCampus[city])
+const campus =
+  (talks && talks[0] && talks[0].data.campus) || (city && defaultCampus[city])
 const room = talks && talks[0] && talks[0].data.room
 const mapURL = talks && talks[0] && talks[0].data.mapURL
 ---
@@ -21,7 +22,18 @@ const mapURL = talks && talks[0] && talks[0].data.mapURL
     <li class="header">
       <div class="date">{niceDate}</div>
       <div class="campus">{campus}</div>
-      {room && <div class="room">{room}{mapURL && <span>&nbsp;(<a href={mapURL}>show on map</a>)</span>}</div>}
+      {
+        room && (
+          <div class="room">
+            {room}
+            {mapURL && (
+              <span>
+                &nbsp;(<a href={mapURL}>show on map</a>)
+              </span>
+            )}
+          </div>
+        )
+      }
     </li>
     {talks && talks.map((t) => <Talk talk={t} />)}
   </ul>
@@ -33,7 +45,7 @@ const mapURL = talks && talks[0] && talks[0].data.mapURL
     transition: all 0.2s ease-in-out;
   }
   a:is(:hover, :focus) {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
   }
   .header {
     padding: 0.5rem;

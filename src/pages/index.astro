@@ -4,6 +4,8 @@ import { getCollection } from "astro:content"
 import TalkDay from "../components/TalkDay.astro"
 import Icon from "astro-icon"
 import Footer from "../components/Footer.astro"
+import { DateTime } from "luxon"
+import { defaultCampus } from "../utils/talk-utils"
 
 const now = Date.now()
 const allTalks = (await getCollection("talks")).toSorted(
@@ -25,9 +27,59 @@ for (const t of allTalks) {
 const dates: Array<string> = Array.from(talksByDate.keys()).toSorted()
 const futureDates = dates.filter((d) => new Date(d).valueOf() >= now)
 const pastDates = dates.filter((d) => new Date(d).valueOf() < now).toReversed()
+
+function zeropad(n: number) {
+  return n < 10 ? `0${n}` : `${n}`
+}
+
+/**
+ * Convert a talk to an event for the add-to-calendar-button
+ */
+function convertToATCB(talk: (typeof allTalks)[0]) {
+  let name = `[DAIS] ${talk.data.speakerName}`
+  if (talk.data.title) {
+    name += ` - ${talk.data.title}`
+  }
+  let description = "Talk in the Discrete Algorithm Insights Seminar RMU[br]\n"
+  description += "[url]https://dais.rhein-main-universitaeten.de[/url]"
+  description += `[br][br]\n\nSpeaker: ${talk.data.speakerName}`
+  if (talk.data.speakerAffiliation) {
+    description += ` (${talk.data.speakerAffiliation})`
+  }
+  if (talk.data.title) {
+    description += `[br]\nTitle: ${talk.data.title}`
+  }
+  if (talk.body) {
+    description += `[br][br]\n\nAbstract: ${talk.body}`
+  }
+  const location = defaultCampus[talk.data.city]
+  const datetime = DateTime.fromJSDate(talk.data.date, {
+    zone: "Europe/Berlin",
+  })
+  const year = datetime.year
+  const month = zeropad(datetime.month)
+  const day = zeropad(datetime.day)
+  const hour = zeropad(datetime.hour)
+  const hourEnd = zeropad(datetime.hour + 1)
+  const minute = zeropad(datetime.minute)
+  const e = {
+    name,
+    description,
+    location,
+    url: "https://dais.rhein-main-universitaeten.de/",
+    startDate: `${year}-${month}-${day}`,
+    startTime: `${hour}:${minute}`,
+    endTime: `${hourEnd}:${minute}`,
+    timeZone: "Europe/Berlin",
+  }
+  return e
+}
+
+const addToCalendarDates = JSON.stringify(allTalks.map(convertToATCB))
 ---
 
 <Layout title="DAIS RMU Seminar">
+  <script src="/add-to-calendar-button@2.js" async defer></script>
   <main>
     <section>
       <p>
@@ -57,7 +109,19 @@ const pastDates = dates.filter((d) => new Date(d).valueOf() < now).toReversed()
     {
       futureDates.length > 0 && (
         <section>
-          <h2>Upcoming talks</h2>
+          <div class="h2-and-add-to-calendar-button">
+            <h2>Upcoming talks</h2>
+            <add-to-calendar-button
+              name="DAIS RMU Seminar"
+              dates={addToCalendarDates}
+              timeZone="Europe/Berlin"
+              options="'iCal','Apple','Google','Outlook.com','Yahoo','MicrosoftTeams','Microsoft365'"
+              iCalFileName="dais-calendar"
+              hideBackground
+              hideCheckmark
+              size="2"
+            />
+          </div>
           <div class="days-list">
             {futureDates.map((d) => (
               <TalkDay date={d} talks={talksByDate.get(d)} />
@@ -116,8 +180,25 @@ const pastDates = dates.filter((d) => new Date(d).valueOf() < now).toReversed()
   h2 {
     padding: 0;
     margin: 0;
+  }
+  .h2-and-add-to-calendar-button {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    display: flex;
+    place-items: center;
+    flex-wrap: wrap;
+    justify-content: end;
+  }
+  h2 {
+    width: 100%;
+  }
+  @media (min-width: 500px) {
+    h2 {
+      width: max-content;
+    }
+    .h2-and-add-to-calendar-button {
+      justify-content: space-between;
+    }
   }
   .text-gradient {
     background-image: var(--accent-gradient);
