@@ -5,7 +5,8 @@ import TalkDay from "../components/TalkDay.astro"
 import Icon from "astro-icon"
 import Footer from "../components/Footer.astro"
 import { DateTime } from "luxon"
-import { defaultCampus } from "../utils/talk-utils"
+import { defaultCampus } from "../talk-utils"
+import Header from "../components/Header.astro"
 
 const now = Date.now()
 const allTalks = (await getCollection("talks")).toSorted(
@@ -82,6 +83,7 @@ const addToCalendarDates = JSON.stringify(allTalks.map(convertToATCB))
   <script src="/add-to-calendar-button@2.js" async defer></script>
   <main>
     <section>
+      <Header />
       <p>
         The <b>Discrete Algorithm Insights Seminar</b> at the <a
           href="https://www.rhein-main-universitaeten.de/en"
@@ -200,13 +202,6 @@ const addToCalendarDates = JSON.stringify(allTalks.map(convertToATCB))
       justify-content: space-between;
     }
   }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
   .infobox {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -232,31 +227,11 @@ const addToCalendarDates = JSON.stringify(allTalks.map(convertToATCB))
     color: rgb(var(--accent-mainz));
     animation: jump 1s;
   }
-
-  .calendar {
-    font-size: 0.8rem;
-    text-decoration: none;
-    display: flex;
-    place-items: center;
-    gap: 0.5ex;
-    padding: 0;
-    margin: 0;
-  }
-  .calendar:is(:hover, :focus) {
-    background: rgba(103, 192, 255, 0.7);
-  }
-  .calendar:is(:hover, :focus) .icon {
-    /* color: rgb(var(--accent-mainz));
-    animation: jump 1s; */
-  }
   .icon {
     height: 2rem;
     transition: ease-in-out 0.5s;
     position: relative;
     color: rgb(var(--accent-darmstadt));
-  }
-  .calendar .icon {
-    height: 1.5em;
   }
   @keyframes jump {
     0% {

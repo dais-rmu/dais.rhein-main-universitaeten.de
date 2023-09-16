@@ -1,10 +1,7 @@
 ---
-import Header from "../components/Header.astro"
-
 interface Props {
   title: string
 }
-
 const { title } = Astro.props
 ---
 
@@ -20,22 +17,15 @@ const { title } = Astro.props
   </head>
   <body>
     <div class="container">
-      <Header />
       <slot />
     </div>
   </body>
 </html>
-<style is:global>
+<style>
   :root {
     --accent-darmstadt: 134, 136, 139;
     --accent-frankfurt: 59, 135, 196;
     --accent-mainz: 214, 54, 66;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent-frankfurt)) 3%,
-      rgb(var(--accent-mainz)) 15%,
-      rgb(var(--accent-darmstadt)) 25%
-    );
   }
   html {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
@@ -49,7 +39,6 @@ const { title } = Astro.props
   .container {
     margin: auto;
     padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
+    max-width: 768px;
   }
 </style>

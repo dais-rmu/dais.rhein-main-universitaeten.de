@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import { getCollection, getEntryBySlug } from "astro:content"
-import { printDate, printTime, defaultCampus } from "../utils/talk-utils"
+import { printDate, printTime, defaultCampus } from "../talk-utils"
 
 export async function getStaticPaths() {
   const allTalks = (await getCollection("talks")).toSorted(
