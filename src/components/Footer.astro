@@ -1,21 +1,33 @@
 ---
+import Icon from "astro-icon"
+import { execSync } from "child_process"
 
+// const hash = execSync(`git log -1 --pretty="format:%h"`)
+const last_mod = execSync(`git log -1 --pretty="format:%as"`)
 ---
 
 <footer>
-  <a href="https://www.rhein-main-universitaeten.de/en"
-    ><img src="/rmu-logo.svg" /></a
-  >
-  <a href="https://www.goethe-university-frankfurt.de/"
-    ><img src="/goethe-logo.svg" /></a
-  >
-  <a href="https://homepage.uni-mainz.de/"><img src="/jgu-logo.svg" /></a>
-  <a href="https://www.tu-darmstadt.de/index.en.jsp"
-    ><img src="/tud-logo.svg" /></a
-  >
+  <div class="logos">
+    <a href="https://www.rhein-main-universitaeten.de/en"
+      ><img src="/rmu-logo.svg" /></a
+    >
+    <a href="https://www.goethe-university-frankfurt.de/"
+      ><img src="/goethe-logo.svg" /></a
+    >
+    <a href="https://homepage.uni-mainz.de/"><img src="/jgu-logo.svg" /></a>
+    <a href="https://www.tu-darmstadt.de/index.en.jsp"
+      ><img src="/tud-logo.svg" /></a
+    >
+  </div>
+  <div class="legal">
+    {last_mod} | <a href="https://github.com/goethe-tcs/dais"
+      ><Icon name="mdi:github" /></a
+    > |
+    <a href="https://tcs.uni-frankfurt.de/legal/">Impressum und Datenschutz</a>
+  </div>
 </footer>
 <style>
-  footer {
+  .logos {
     padding-top: 2rem;
     padding-bottom: 2rem;
     display: flex;
@@ -26,18 +38,31 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    column-fill: balance;
   }
-  footer a {
+  .logos a {
     display: flex;
     justify-content: center;
     place-items: center;
     transition: all 0.3s ease-in-out;
   }
+  .logos img {
+    max-width: 150px;
+    margin: 1rem;
+  }
   footer a:is(:hover, :focus) {
     background-color: rgba(0, 0, 0, 0.1);
   }
-  footer img {
-    max-width: 150px;
-    margin: 1rem;
+  .legal {
+    font-size: smaller;
+    text-align: right;
+  }
+  .legal svg {
+    width: 1em;
+    margin-bottom: -0.2em;
+  }
+  .legal a {
+    text-decoration: none;
+    color: black;
   }
 </style>
