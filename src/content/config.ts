@@ -14,6 +14,7 @@ const talksCollection = defineCollection({
       .transform((s) =>
         DateTime.fromSQL(s, { zone: "Europe/Berlin" }).toJSDate(),
       ),
+    duration: z.number().default(60),
     city: z.enum(["darmstadt", "frankfurt", "mainz"]),
     campus: z.string().optional(),
     room: z.string().optional(),

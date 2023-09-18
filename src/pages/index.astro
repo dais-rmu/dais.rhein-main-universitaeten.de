@@ -61,8 +61,11 @@ function convertToATCB(talk: (typeof allTalks)[0]) {
   const month = zeropad(datetime.month)
   const day = zeropad(datetime.day)
   const hour = zeropad(datetime.hour)
-  const hourEnd = zeropad(datetime.hour + 1)
   const minute = zeropad(datetime.minute)
+  const endTime = datetime.hour * 60 + datetime.minute + talk.data.duration
+  const hourEnd = zeropad(Math.floor(endTime / 60))
+  const minuteEnd = zeropad(endTime % 60)
+  console.log(hourEnd, minuteEnd)
   const e = {
     name,
     description,
@@ -70,7 +73,7 @@ function convertToATCB(talk: (typeof allTalks)[0]) {
     url: "https://dais.rhein-main-universitaeten.de/",
     startDate: `${year}-${month}-${day}`,
     startTime: `${hour}:${minute}`,
-    endTime: `${hourEnd}:${minute}`,
+    endTime: `${hourEnd}:${minuteEnd}`,
     timeZone: "Europe/Berlin",
   }
   return e
