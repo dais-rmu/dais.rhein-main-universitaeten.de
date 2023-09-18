@@ -1,14 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro"
 import { getCollection } from "astro:content"
+import Layout from "../layouts/Layout.astro"
 import TalkDay from "../components/TalkDay.astro"
 import Icon from "astro-icon"
 import Footer from "../components/Footer.astro"
-import { DateTime } from "luxon"
-import { defaultCampus } from "../talk-utils"
 import Header from "../components/Header.astro"
+import { convertToATCB } from "../talk-utils"
 
-const now = Date.now()
 const allTalks = (await getCollection("talks")).toSorted(
   (t1, t2) => t1.data.date.valueOf() - t2.data.date.valueOf(),
 )
@@ -25,60 +23,10 @@ for (const t of allTalks) {
   list.push(t)
 }
 
+const now = Date.now()
 const dates: Array<string> = Array.from(talksByDate.keys()).toSorted()
 const futureDates = dates.filter((d) => new Date(d).valueOf() >= now)
 const pastDates = dates.filter((d) => new Date(d).valueOf() < now).toReversed()
-
-function zeropad(n: number) {
-  return n < 10 ? `0${n}` : `${n}`
-}
-
-/**
- * Convert a talk to an event for the add-to-calendar-button
- */
-function convertToATCB(talk: (typeof allTalks)[0]) {
-  let name = `[DAIS] ${talk.data.speakerName}`
-  if (talk.data.title) {
-    name += ` - ${talk.data.title}`
-  }
-  let description = "Talk in the Discrete Algorithm Insights Seminar RMU[br]\n"
-  description += "[url]https://dais.rhein-main-universitaeten.de[/url]"
-  description += `[br][br]\n\nSpeaker: ${talk.data.speakerName}`
-  if (talk.data.speakerAffiliation) {
-    description += ` (${talk.data.speakerAffiliation})`
-  }
-  if (talk.data.title) {
-    description += `[br]\nTitle: ${talk.data.title}`
-  }
-  if (talk.body) {
-    description += `[br][br]\n\nAbstract: ${talk.body}`
-  }
-  const location = defaultCampus[talk.data.city]
-  const datetime = DateTime.fromJSDate(talk.data.date, {
-    zone: "Europe/Berlin",
-  })
-  const year = datetime.year
-  const month = zeropad(datetime.month)
-  const day = zeropad(datetime.day)
-  const hour = zeropad(datetime.hour)
-  const minute = zeropad(datetime.minute)
-  const endTime = datetime.hour * 60 + datetime.minute + talk.data.duration
-  const hourEnd = zeropad(Math.floor(endTime / 60))
-  const minuteEnd = zeropad(endTime % 60)
-  console.log(hourEnd, minuteEnd)
-  const e = {
-    name,
-    description,
-    location,
-    url: "https://dais.rhein-main-universitaeten.de/",
-    startDate: `${year}-${month}-${day}`,
-    startTime: `${hour}:${minute}`,
-    endTime: `${hourEnd}:${minuteEnd}`,
-    timeZone: "Europe/Berlin",
-  }
-  return e
-}
-
 const addToCalendarDates = JSON.stringify(allTalks.map(convertToATCB))
 ---
 
