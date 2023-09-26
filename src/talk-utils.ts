@@ -60,7 +60,6 @@ export function convertToATCB(talk: CollectionEntry<"talks">) {
   const endTime = datetime.hour * 60 + datetime.minute + talk.data.duration
   const hourEnd = zeropad(Math.floor(endTime / 60))
   const minuteEnd = zeropad(endTime % 60)
-  console.log(hourEnd, minuteEnd)
   const e = {
     name,
     description,
