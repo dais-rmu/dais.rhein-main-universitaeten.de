@@ -8,11 +8,12 @@ city: frankfurt
 room: Hörsaaltrakt Bockenheim / H 3
 mapURL: https://www.openstreetmap.org/way/670254445
 ---
+
 Graph neural networks (GNNs) are deep learning models for graph data
 that play a key role in machine learning on graphs. A GNN describes a
 distributed algorithm carrying out local computations at the vertices of
 the input graph. Typically, the parameters governing this algorithm are
-acquired through data-driven learning processes. 
+acquired through data-driven learning processes.
 
 After introducing the basic model, in this talk we will focus on the
 expressiveness of GNNs: which functions on graphs or their vertices can
