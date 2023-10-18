@@ -14,25 +14,55 @@ const time = printTime(talk.data.date)
   <div>
     <!--href={talk.slug}-->
     <div class="time">{time}</div>
-    <div>
-      <div class="speaker">
-        {talk.data.speakerName}
-        {
-          talk.data.speakerAffiliation &&
-            " (" + talk.data.speakerAffiliation + ")"
-        }
-      </div>
-      {talk.data.title && <div class="title">{talk.data.title}</div>}
-    </div>
+    <details>
+      <summary class={talk.body ? "has-abstract" : ""}>
+        <div class="speaker">
+          <span class="name">{talk.data.speakerName}</span>
+          {
+            talk.data.speakerAffiliation && (
+              <span class="affiliation"> ({talk.data.speakerAffiliation})</span>
+            )
+          }
+        </div>
+        {talk.data.title && <div class="title">{talk.data.title}</div>}
+        {talk.body && <div class="show-more">[show abstract]</div>}
+        {talk.body && <div class="show-less">[hide]</div>}
+      </summary>
+      {
+        talk.body && (
+          <div class="abstract">
+            <b>Abstract:</b>
+            {talk.body}
+          </div>
+        )
+      }
+    </details>
   </div>
 </li>
 <style>
   .time {
     font-weight: bold;
   }
-  .speaker {
+  .name {
+    font-weight: bold;
   }
   .title {
+  }
+  details[open] .show-more {
+    display: none;
+  }
+  details:not([open]) .show-less {
+    display: none;
+  }
+  .show-more,
+  .show-less {
+    margin-top: 1ex;
+    font-size: small;
+    /* font-family: "Courier New", Courier, monospace; */
+    text-decoration: underline;
+    cursor: pointer;
+    color: black;
+    width: max-content;
   }
   .talk-card {
     list-style: none;
@@ -55,8 +85,28 @@ const time = printTime(talk.data.date)
     margin-top: 0.5rem;
     margin-bottom: 0;
   }
-  .talk-card:is(:hover, :focus-within) {
+  .abstract {
+    background-color: rgba(var(--accent-color), 0.2);
+    padding: 0.5rem;
+    font-size: 90%;
+    /* border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom, rgba(var(--accent-color), 1), rgba(0, 0, 0, 0)) 1 100%; */
+  }
+  /* .talk-card:is(:hover, :focus-within) {
     background-color: rgb(var(--accent-color));
     color: white;
+  } */
+  details {
+    width: 100%;
+  }
+  .has-abstract {
+    /* cursor: pointer; */
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
   }
 </style>
