@@ -5,8 +5,8 @@ speakerAffiliation: RWTH Aachen
 speakerURL: https://www.lics.rwth-aachen.de/cms/LICS/Der-Lehrstuhl/Team/Dozierende/~ocwf/Martin-Grohe/
 date: 2023-11-24 13:00
 city: frankfurt
-room: Hörsaaltrakt Bockenheim / H 3
-mapURL: https://www.openstreetmap.org/way/670254445
+room: "H 3 | Hörsaaltrakt Bockenheim, Gräfstraße 50-54, 60486 Frankfurt am Main"
+mapURL: https://maps.app.goo.gl/GBaDX8DgGaVoXKxs8
 ---
 
 Graph neural networks (GNNs) are deep learning models for graph data
