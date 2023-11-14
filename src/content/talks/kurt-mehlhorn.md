@@ -3,7 +3,7 @@ speakerName: Kurt Mehlhorn
 title: Who Gets What? Fair Division of Indivisible Goods
 speakerAffiliation: Max Planck Institute for Informatics
 speakerURL: https://people.mpi-inf.mpg.de/~mehlhorn/
-room: "Raum S313/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
+room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
 date: 2023-11-03 13:00
 city: darmstadt
 mapURL: https://maps.app.goo.gl/cQd2XPLfYMWVdMAn6
