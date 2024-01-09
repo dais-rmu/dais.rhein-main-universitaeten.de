@@ -7,6 +7,7 @@ room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
 date: 2024-01-19 13:00
 city: darmstadt
 ---
+
 Property testing (for a property P) asks for a given graph, whether it has
 property P, or is "structurally far" from having that property. A "testing
 algorithm" is a probabilistic algorithm that answers this question with
