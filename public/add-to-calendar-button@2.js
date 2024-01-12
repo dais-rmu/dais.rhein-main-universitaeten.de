@@ -880,8 +880,8 @@
             a(e[r["" + t[0]]["" + t[1]]["" + t[2]][1]]),
           ]
         : 2 === t.length
-        ? [r["" + t[0]]["" + t[1]][0], a(e[r["" + t[0]]["" + t[1]][1]])]
-        : [r["" + t[0]][0], a(e[r["" + t[0]][1]])]
+          ? [r["" + t[0]]["" + t[1]][0], a(e[r["" + t[0]]["" + t[1]][1]])]
+          : [r["" + t[0]][0], a(e[r["" + t[0]][1]])]
       : (console.error("Given timezone not valid."), "")
   }
   function a(t) {
@@ -1374,26 +1374,26 @@
                       t.dates["" + e].description,
                     )))
                   : null == t.dates["" + e].description &&
-                    null != t.description &&
-                    "" != t.description
-                  ? ((t.description = t.description.replace(
-                      /(\\r\\n|\\n|\\r|<br(\s|\s\/|\/|)>)/g,
-                      "",
-                    )),
-                    (t.dates["" + e].descriptionHtmlFree = n(
-                      t.description,
-                      !0,
-                    )),
-                    (t.dates["" + e].descriptionHtmlFreeICal = n(
-                      t.description,
-                      !0,
-                      !0,
-                    )),
-                    (t.dates["" + e].description = n(t.description)))
-                  : (t.dates["" + e].descriptionHtmlFree = t.dates[
-                      "" + e
-                    ].description =
-                      "")
+                      null != t.description &&
+                      "" != t.description
+                    ? ((t.description = t.description.replace(
+                        /(\\r\\n|\\n|\\r|<br(\s|\s\/|\/|)>)/g,
+                        "",
+                      )),
+                      (t.dates["" + e].descriptionHtmlFree = n(
+                        t.description,
+                        !0,
+                      )),
+                      (t.dates["" + e].descriptionHtmlFreeICal = n(
+                        t.description,
+                        !0,
+                        !0,
+                      )),
+                      (t.dates["" + e].description = n(t.description)))
+                    : (t.dates["" + e].descriptionHtmlFree = t.dates[
+                        "" + e
+                      ].description =
+                        "")
                 return t
               })(e, t)).dates["" + t].name &&
               "" != e.dates["" + t].name) ||
@@ -1860,17 +1860,17 @@
                               i),
                             !1)
                           : (e = a.dates["" + n]["" + t].split("-")).length <
-                              3 || 3 < e.length
-                          ? ((a.validationError =
-                              o +
-                              " failed: date misspelled [" +
-                              t +
-                              ": " +
-                              a.dates["" + n]["" + t] +
-                              "]" +
-                              i),
-                            !1)
-                          : ((r["" + t] = new Date(e[0], e[1] - 1, e[2])), !0)
+                                3 || 3 < e.length
+                            ? ((a.validationError =
+                                o +
+                                " failed: date misspelled [" +
+                                t +
+                                ": " +
+                                a.dates["" + n]["" + t] +
+                                "]" +
+                                i),
+                              !1)
+                            : ((r["" + t] = new Date(e[0], e[1] - 1, e[2])), !0)
                       })
                     )
                       return
@@ -2047,8 +2047,8 @@
       "" != a && null != t.dates["" + a].icsFile
         ? t.dates["" + a].icsFile
         : "" == a && null != t.icsFile
-        ? t.icsFile
-        : ""
+          ? t.icsFile
+          : ""
     if (
       "" == a ||
       (d(a, !1) &&
@@ -2162,8 +2162,8 @@
                   "dropdown-static" === e.listStyle
                     ? xt(t, a, l, !0)
                     : "dropup-static" === e.listStyle
-                    ? xt(t, a, l, !1, !0)
-                    : xt(t, a, l)
+                      ? xt(t, a, l, !1, !0)
+                      : xt(t, a, l)
               }, 5)),
           w(n),
           (r = t.querySelector(".atcb-list-item")) ||
@@ -2673,12 +2673,12 @@
             "<br>" +
             B("date.status.cancelled.cta", p)
           : "none" != p.pastDateHandling &&
-            (("all" == g && p.allOverdue) ||
-              ("all" != g && p.dates["" + g].overdue))
-          ? B("expired", p)
-          : p.label && "" != p.label
-          ? p.label
-          : "+ " + B("label.addtocalendar", p),
+              (("all" == g && p.allOverdue) ||
+                ("all" != g && p.dates["" + g].overdue))
+            ? B("expired", p)
+            : p.label && "" != p.label
+              ? p.label
+              : "+ " + B("label.addtocalendar", p),
       o =
         "all" != g && "CANCELLED" == p.dates["" + g].status
           ? B("date.status.cancelled", p)
@@ -2744,20 +2744,20 @@
                 p.dates["" + g].location),
               u.append(o)))
         : "" == p.dates["" + g].description ||
-          0 != e.length ||
-          (null != p.recurrence && "" != p.recurrence)
-        ? ((b.style.cssText = "-webkit-line-clamp: 2;"),
-          0 != e.length ||
-            (null != p.recurrence && "" != p.recurrence) ||
-            ((s.style.alignSelf = "center"),
-            (b.style.cssText = "text-align: center; -webkit-line-clamp: 2;")))
-        : ((u = document.createElement("div")).classList.add(
-            "atcb-date-btn-content",
-          ),
-          (u.textContent = p.dates["" + g].description),
-          (u.style.cssText =
-            "overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"),
-          d.append(u)),
+            0 != e.length ||
+            (null != p.recurrence && "" != p.recurrence)
+          ? ((b.style.cssText = "-webkit-line-clamp: 2;"),
+            0 != e.length ||
+              (null != p.recurrence && "" != p.recurrence) ||
+              ((s.style.alignSelf = "center"),
+              (b.style.cssText = "text-align: center; -webkit-line-clamp: 2;")))
+          : ((u = document.createElement("div")).classList.add(
+              "atcb-date-btn-content",
+            ),
+            (u.textContent = p.dates["" + g].description),
+            (u.style.cssText =
+              "overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"),
+            d.append(u)),
       0 < e.length || (null != p.recurrence && "" != p.recurrence))
     ) {
       var u,
@@ -3355,8 +3355,8 @@
       "" != e.dates["" + a].icsFile
         ? e.dates["" + a].icsFile
         : null != e.icsFile && "" != e.icsFile
-        ? e.icsFile
-        : ""
+          ? e.icsFile
+          : ""
     if (i && "" !== i && e.proxy) R(e, "ical", i)
     else {
       if (!("" == i || (A() && g() && 1 != e.bypassWebViewCheck)))
@@ -3375,12 +3375,12 @@
           "all" == a
             ? s.push("METHOD:PUBLISH")
             : null != e.dates["" + a].status &&
-              "CANCELLED" == e.dates["" + a].status
-            ? s.push("METHOD:CANCEL")
-            : null != e.dates["" + a].organizer &&
-              "" != e.dates["" + a].organizer
-            ? s.push("METHOD:REQUEST")
-            : s.push("METHOD:PUBLISH"),
+                "CANCELLED" == e.dates["" + a].status
+              ? s.push("METHOD:CANCEL")
+              : null != e.dates["" + a].organizer &&
+                  "" != e.dates["" + a].organizer
+                ? s.push("METHOD:REQUEST")
+                : s.push("METHOD:PUBLISH"),
           [])
       var l = "all" != a ? a : 0,
         c = "all" != a ? a : e.dates.length - 1
@@ -3390,30 +3390,30 @@
         var d = u.allday
           ? ";VALUE=DATE"
           : null != e.dates["" + t].timeZone && "" != e.dates["" + t].timeZone
-          ? ((d = (function (t, e = !1) {
-              const a = N(t)
-              var o
-              return null == a[1] || "" == a[1]
-                ? ""
-                : ((o = "TZID=" + (t = "" == a[0] ? t : a[0])),
-                  (t = [
-                    "BEGIN:VTIMEZONE\r\nTZID:" +
-                      t +
-                      "\r\nX-LIC-LOCATION:" +
-                      t +
-                      "\r\nLAST-MODIFIED:" +
-                      a[1]
-                        .replace(/[^\w_\-:,;=+/<br>]/g, "")
-                        .replace(/<br>/g, "\r\n") +
-                      "END:VTIMEZONE",
-                    o,
-                  ]),
-                  e ? JSON.stringify(t) : t)
-            })(e.dates["" + t].timeZone)),
-            b.includes(e.dates["" + t].timeZone) || s.push(d[0]),
-            b.push(e.dates["" + t].timeZone),
-            ";" + d[1])
-          : void 0
+            ? ((d = (function (t, e = !1) {
+                const a = N(t)
+                var o
+                return null == a[1] || "" == a[1]
+                  ? ""
+                  : ((o = "TZID=" + (t = "" == a[0] ? t : a[0])),
+                    (t = [
+                      "BEGIN:VTIMEZONE\r\nTZID:" +
+                        t +
+                        "\r\nX-LIC-LOCATION:" +
+                        t +
+                        "\r\nLAST-MODIFIED:" +
+                        a[1]
+                          .replace(/[^\w_\-:,;=+/<br>]/g, "")
+                          .replace(/<br>/g, "\r\n") +
+                        "END:VTIMEZONE",
+                      o,
+                    ]),
+                    e ? JSON.stringify(t) : t)
+              })(e.dates["" + t].timeZone)),
+              b.includes(e.dates["" + t].timeZone) || s.push(d[0]),
+              b.push(e.dates["" + t].timeZone),
+              ";" + d[1])
+            : void 0
         s.push("BEGIN:VEVENT"),
           s.push("UID:" + e.dates["" + t].uid),
           s.push("DTSTAMP:" + h(r, "clean", !0)),
@@ -3624,8 +3624,8 @@
         ? /(-|:|(\.\d{3}))/g
         : /(\.\d{3})/g
       : "clean" == e
-      ? /(-|T(\d{2}:\d{2}:\d{2}\.\d{3})Z)/g
-      : /T(\d{2}:\d{2}:\d{2}\.\d{3})Z/g
+        ? /(-|T(\d{2}:\d{2}:\d{2}\.\d{3})Z)/g
+        : /T(\d{2}:\d{2}:\d{2}\.\d{3})Z/g
     return o
       ? t.toISOString().replace(a, "").replace("Z", "")
       : t.toISOString().replace(a, "")
@@ -3783,8 +3783,8 @@
       null != e
         ? e
         : 0 === (e = t.querySelectorAll(".atcb-modal")).length
-        ? null
-        : e[e.length - 1]
+          ? null
+          : e[e.length - 1]
     null != t &&
       (t.getBoundingClientRect().height + 150 > window.innerHeight
         ? (document.body.classList.add("atcb-modal-no-scroll"),
@@ -4738,23 +4738,24 @@
         ;(t = K.includes(i)
           ? "" == e || "true" === e
           : Q.includes(i)
-          ? JSON.parse(e)
-          : V.includes(i)
-          ? ((n = "[" != e.substring(0, 1) ? "[" + e + "]" : e), JSON.parse(n))
-          : W.includes(i)
-          ? (n = (function () {
-              let t = e
-              return (
-                (e.includes('"') || e.includes("'")) &&
-                  (t = e.includes("[")
-                    ? e.substring(2, e.length - 2)
-                    : e.substring(1, e.length - 1)),
-                (t = e.includes("|") ? t : t.replace(/\s/g, ""))
-              )
-            })()).includes("','")
-            ? n.split("','")
-            : n.split('","')
-          : e),
+            ? JSON.parse(e)
+            : V.includes(i)
+              ? ((n = "[" != e.substring(0, 1) ? "[" + e + "]" : e),
+                JSON.parse(n))
+              : W.includes(i)
+                ? (n = (function () {
+                    let t = e
+                    return (
+                      (e.includes('"') || e.includes("'")) &&
+                        (t = e.includes("[")
+                          ? e.substring(2, e.length - 2)
+                          : e.substring(1, e.length - 1)),
+                      (t = e.includes("|") ? t : t.replace(/\s/g, ""))
+                    )
+                  })()).includes("','")
+                  ? n.split("','")
+                  : n.split('","')
+                : e),
           (o["" + i] = t)
       }
       i = a.getAttribute("identifier")
@@ -4948,10 +4949,10 @@
             (o
               ? (e.style.display = "inline-block")
               : n
-              ? ((e.style.display = "flex"),
-                (e.style.flexWrap = "wrap"),
-                (e.style.justifyContent = "center"))
-              : (e.style.display = "block")))
+                ? ((e.style.display = "flex"),
+                  (e.style.flexWrap = "wrap"),
+                  (e.style.justifyContent = "center"))
+                : (e.style.display = "block")))
   }
   async function Dt(e, t, a, o = null, n = !1, i = !1) {
     t.prepend(e),
@@ -4962,10 +4963,10 @@
       n
         ? (a.style.display = "inline-block")
         : i
-        ? ((a.style.display = "flex"),
-          (a.style.flexWrap = "wrap"),
-          (a.style.justifyContent = "center"))
-        : (a.style.display = "block")
+          ? ((a.style.display = "flex"),
+            (a.style.flexWrap = "wrap"),
+            (a.style.justifyContent = "center"))
+          : (a.style.display = "block")
   }
   function Ct(t, e) {
     var a
@@ -5048,8 +5049,8 @@
     var a = (a = document.getElementById(S.active + "-modal-host"))
       ? a.shadowRoot
       : o
-      ? o.shadowRoot
-      : null
+        ? o.shadowRoot
+        : null
     if (
       a &&
       a.querySelector(".atcb-list") &&
@@ -5063,13 +5064,13 @@
         ? ("ArrowDown" === e.key && o.dataset.optionNumber < n
             ? (t = parseInt(o.dataset.optionNumber) + 1)
             : "Tab" === e.key
-            ? (t =
-                o.dataset.optionNumber < n
-                  ? parseInt(o.dataset.optionNumber) + 1
-                  : 1)
-            : "ArrowUp" === e.key &&
-              1 <= o.dataset.optionNumber &&
-              (t = parseInt(o.dataset.optionNumber) - 1),
+              ? (t =
+                  o.dataset.optionNumber < n
+                    ? parseInt(o.dataset.optionNumber) + 1
+                    : 1)
+              : "ArrowUp" === e.key &&
+                1 <= o.dataset.optionNumber &&
+                (t = parseInt(o.dataset.optionNumber) - 1),
           0 < t &&
             a
               .querySelector('.atcb-list-item[data-option-number="' + t + '"]')
@@ -5086,8 +5087,8 @@
       e = (e = document.getElementById(S.active + "-modal-host"))
         ? e.shadowRoot
         : t
-        ? t.shadowRoot
-        : null
+          ? t.shadowRoot
+          : null
     e && (t = e.querySelector("#atcb-bgoverlay")) && (w(t), yt(e))
   }
 })()

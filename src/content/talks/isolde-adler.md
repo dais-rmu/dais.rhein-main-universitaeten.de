@@ -11,7 +11,7 @@ city: darmstadt
 Property testing (for a property P) asks for a given graph, whether it has
 property P, or is "structurally far" from having that property. A "testing
 algorithm" is a probabilistic algorithm that answers this question with
-high probability correctly, by only looking at small parts of the input. 
+high probability correctly, by only looking at small parts of the input.
 Testing algorithms are thought of as "extremely efficient", making them relevant in the context of large data sets.
 
 In this talk I will present recent positive and negative results about
