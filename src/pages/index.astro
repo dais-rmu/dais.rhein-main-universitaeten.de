@@ -31,18 +31,7 @@ const addToCalendarDates = JSON.stringify(allTalks.map(convertToATCB))
 ---
 
 <Layout title="DAIS RMU Seminar">
-  <script type="module">
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue
-        observer.disconnect()
-        import("../../node_modules/add-to-calendar-button/dist/module/index.js")
-      }
-    })
-    const instances = document.querySelectorAll("add-to-calendar-button")
-    for (const instance of instances) observer.observe(instance)
-  </script>
-  <!-- <script src="/add-to-calendar-button@2.js" async defer></script> -->
+  <script src="/add-to-calendar-button@2.js" async defer></script>
   <main>
     <section>
       <Header />
