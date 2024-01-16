@@ -4,6 +4,7 @@ title: Logic and property testing
 speakerAffiliation: University of Bamberg
 speakerURL: https://www.uni-bamberg.de/algok/team/prof-dr-isolde-adler/
 room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
+mapURL: https://maps.app.goo.gl/cQd2XPLfYMWVdMAn6
 date: 2024-01-19 13:00
 city: darmstadt
 ---
