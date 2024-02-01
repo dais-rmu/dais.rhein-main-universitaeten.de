@@ -6,8 +6,8 @@ speakerURL: https://www.algorithmics.informatik.uni-mainz.de/people/rebecca-stei
 date: 2024-02-02 14:15
 duration: 30
 city: mainz
-room: "Raum 03-428 | Staudingerweg 9, 55128 Mainz"
-mapURL: https://maps.app.goo.gl/P3WV4px6DJUDfKdP6
+room: "Raum 01-211 | Binger Str. 14-16, 55122 Mainz"
+mapURL: https://maps.app.goo.gl/pbWwaFXUouMRRrDF8
 ---
 
 In the broadcasting problem on trees, a {0,1}-message, originating in an
