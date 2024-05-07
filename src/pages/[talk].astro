@@ -19,6 +19,7 @@ const talk = talkSlug && (await getEntryBySlug("talks", talkSlug))
 const date = talk && printDate(talk.data.date)
 const time = talk && printTime(talk.data.date)
 const campus = talk && defaultCampus[talk.data.city]
+const { Content } = await talk.render()
 ---
 
 <Layout title="DAIS RMU Seminar">
@@ -47,7 +48,7 @@ const campus = talk && defaultCampus[talk.data.city]
         </div>
         {talk.body && (
           <div>
-            <strong>Abstract: </strong> {talk.body}
+            <strong>Abstract: </strong> <Content />
           </div>
         )}
       </div>

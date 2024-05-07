@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { talk } = Astro.props
+const { Content } = await talk.render()
 const time = printTime(talk.data.date)
 ---
 
@@ -32,7 +33,7 @@ const time = printTime(talk.data.date)
         talk.body && (
           <div class="abstract">
             <b>Abstract:</b>
-            {talk.body}
+            <Content />
           </div>
         )
       }
@@ -87,7 +88,7 @@ const time = printTime(talk.data.date)
   }
   .abstract {
     background-color: rgba(var(--accent-color), 0.2);
-    padding: 0.5rem;
+    padding: 1.25rem;
     font-size: 90%;
     /* border-width: 5px;
     border-style: solid;
