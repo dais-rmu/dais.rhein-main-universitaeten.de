@@ -27,7 +27,9 @@ const now = Date.now()
 const dates: Array<string> = Array.from(talksByDate.keys()).toSorted()
 const futureDates = dates.filter((d) => new Date(d).valueOf() >= now)
 const pastDates = dates.filter((d) => new Date(d).valueOf() < now).toReversed()
-const addToCalendarDates = JSON.stringify(allTalks.map(convertToATCB))
+
+const futureTalks = allTalks.filter((t) => t.data.date.valueOf() >= now)
+const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
 ---
 
 <Layout title="DAIS RMU Seminar">
