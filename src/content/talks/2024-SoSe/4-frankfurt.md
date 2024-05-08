@@ -1,7 +1,7 @@
 ---
 title: Best of Both World Fair Division with Entitlements
 speakerName: Marco Schmalhofer
-speakerAffiliation: TU Darmstadt
+speakerAffiliation: Goethe University Frankfurt
 date: 2024-06-21 14:15
 city: frankfurt
 room: "H 3 | Hörsaaltrakt Bockenheim, Gräfstraße 50-54, 60486 Frankfurt am Main"
