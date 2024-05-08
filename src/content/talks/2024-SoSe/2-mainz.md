@@ -1,7 +1,7 @@
 ---
 speakerName: Annamária Kovács
 title: A proof of the Nisan-Ronen conjecture
-speakerAffiliation: Johannes Gutenberg University Mainz
+speakerAffiliation: Goethe University Frankfurt
 speakerURL: https://www.algorithmics.informatik.uni-mainz.de/people/rebecca-steiner-m-sc/
 date: 2024-05-17 14:15
 duration: 30
