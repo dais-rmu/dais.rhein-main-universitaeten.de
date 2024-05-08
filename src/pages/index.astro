@@ -141,9 +141,14 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
   }
   .h2-and-add-to-calendar-button {
     display: flex;
-    place-items: center;
     flex-wrap: wrap;
     justify-content: end;
+    margin-bottom: 1.25rem;
+  }
+
+  .h2-and-add-to-calendar-button > h2 {
+    margin-top: 0;
+    margin-bottom: 0;
   }
   h2 {
     width: 100%;
@@ -154,6 +159,7 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
     }
     .h2-and-add-to-calendar-button {
       justify-content: space-between;
+      place-items: baseline;
     }
   }
   .infobox {
