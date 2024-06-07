@@ -4,7 +4,7 @@ speakerName: Marco Schmalhofer
 speakerAffiliation: Goethe University Frankfurt
 date: 2024-06-21 14:15
 city: frankfurt
-room: "H 3 | Hörsaaltrakt Bockenheim, Gräfstraße 50-54, 60486 Frankfurt am Main"
+room: "H IV | Hörsaaltrakt Bockenheim, Gräfstraße 50-54, 60486 Frankfurt am Main"
 mapURL: https://maps.app.goo.gl/GBaDX8DgGaVoXKxs8
 ---
 
