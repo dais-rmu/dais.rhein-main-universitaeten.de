@@ -1,6 +1,6 @@
 ---
 speakerName: Anna Zych-Pawlewicz
-title: TBA
+title: Randomization techniques for online bipartite matching
 speakerAffiliation: University of Warsaw
 speakerURL: https://www.mimuw.edu.pl/~anka/
 room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
