@@ -4,16 +4,17 @@ import Talk from "./Talk.astro"
 import { defaultCampus, printDate } from "../talk-utils"
 
 interface Props {
+  compact?: boolean
   date: string
   talks: Array<CollectionEntry<"talks">> | undefined
 }
 
-const { date, talks } = Astro.props
+const { date, talks, compact } = Astro.props
 const niceDate = printDate(new Date(date))
 const city = talks && talks[0] && talks[0].data.city
 const campus =
   (talks && talks[0] && talks[0].data.campus) || (city && defaultCampus[city])
-const room = talks && talks[0] && talks[0].data.room
+const room = !compact && talks && talks[0] && talks[0].data.room
 const mapURL = talks && talks[0] && talks[0].data.mapURL
 ---
 
@@ -55,7 +56,7 @@ const mapURL = talks && talks[0] && talks[0].data.mapURL
   }
   .date {
     font-weight: bold;
-    font-size: 116%;
+    font-size: 1.6rem;
   }
   .talk-day {
     background-color: rgba(var(--accent-color), 30%);

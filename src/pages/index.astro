@@ -92,7 +92,7 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
           <h2>Past talks</h2>
           <div class="days-list">
             {pastDates.map((d) => (
-              <TalkDay date={d} talks={talksByDate.get(d)} />
+              <TalkDay compact date={d} talks={talksByDate.get(d)} />
             ))}
           </div>
         </section>
