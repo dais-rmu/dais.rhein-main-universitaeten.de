@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content"
 import Layout from "../layouts/Layout.astro"
-import TalkDay from "../components/TalkDay.astro"
+import DayCard from "../components/DayCard.astro"
 import { Icon } from "astro-icon/components"
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
@@ -33,7 +33,7 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
 ---
 
 <Layout title="DAIS RMU Seminar">
-  <script src="/add-to-calendar-button@2.js" async defer></script>
+  <script is:inline src="/add-to-calendar-button@2.js" async defer></script>
   <main>
     <section>
       <Header />
@@ -80,7 +80,7 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
           </div>
           <div class="days-list">
             {futureDates.map((d) => (
-              <TalkDay date={d} talks={talksByDate.get(d)} />
+              <DayCard date={d} talks={talksByDate.get(d)} />
             ))}
           </div>
         </section>
@@ -92,7 +92,7 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
           <h2>Past talks</h2>
           <div class="days-list">
             {pastDates.map((d) => (
-              <TalkDay compact date={d} talks={talksByDate.get(d)} />
+              <DayCard date={d} talks={talksByDate.get(d)} />
             ))}
           </div>
         </section>

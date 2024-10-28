@@ -1,40 +1,35 @@
 ---
+/**
+ * This component renders an entire "day" of talks
+ * in a less boxy style, using the compact version of the university logo.
+ */
 import type { CollectionEntry } from "astro:content"
 import Talk from "./Talk.astro"
 import { defaultCampus, printDate } from "../talk-utils"
+import Image from "astro/components/Image.astro"
 
 interface Props {
-  compact?: boolean
   date: string
   talks: Array<CollectionEntry<"talks">> | undefined
 }
 
-const { date, talks, compact } = Astro.props
+const { date, talks } = Astro.props
 const niceDate = printDate(new Date(date))
 const city = talks && talks[0] && talks[0].data.city
 const campus =
   (talks && talks[0] && talks[0].data.campus) || (city && defaultCampus[city])
-const room = !compact && talks && talks[0] && talks[0].data.room
-const mapURL = talks && talks[0] && talks[0].data.mapURL
 ---
 
 <div class={"talk-day " + (city || "")}>
   <ul class="talks">
     <li class="header">
-      <div class="date">{niceDate}</div>
-      <div class="campus">{campus}</div>
-      {
-        room && (
-          <div class="room">
-            {room}
-            {mapURL && (
-              <span>
-                &nbsp;(<a href={mapURL}>show on map</a>)
-              </span>
-            )}
-          </div>
-        )
-      }
+      <div class="date">
+        {niceDate}
+      </div>
+      <div class="location">
+        <Image src={`/compact-${city}.svg`} alt={city} width="20" height="20" />
+        <div class="campus">{campus}</div>
+      </div>
     </li>
     {talks && talks.map((t) => <Talk talk={t} />)}
   </ul>
@@ -48,22 +43,28 @@ const mapURL = talks && talks[0] && talks[0].data.mapURL
   a:is(:hover, :focus) {
     background-color: rgba(0, 0, 0, 0.3);
   }
+  .talks {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
   .header {
-    padding: 0.5rem;
-    padding-right: 0.5rem;
-    background-color: rgb(var(--accent-color));
-    color: white;
+    padding: 0rem;
+    margin: 0.5rem;
+  }
+  .location {
+    font-size: 0.8rem;
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    margin-top: -0.4rem;
+  }
+  .location img {
+    aspect-ratio: 1;
   }
   .date {
     font-weight: bold;
     font-size: 1.6rem;
-  }
-  .talk-day {
-    background-color: rgba(var(--accent-color), 30%);
-    border: 2px solid rgb(var(--accent-color));
-    font-size: 1rem;
-    border-radius: 20px;
-    overflow: hidden;
   }
   .talk-day.darmstadt {
     --accent-color: var(--accent-darmstadt);
@@ -74,11 +75,9 @@ const mapURL = talks && talks[0] && talks[0].data.mapURL
   .talk-day.mainz {
     --accent-color: var(--accent-mainz);
   }
-  .talks {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+  .talk-day {
+    border: 2px solid rgb(var(--accent-color));
+    border-radius: 20px;
+    padding-left: 1rem;
   }
 </style>
