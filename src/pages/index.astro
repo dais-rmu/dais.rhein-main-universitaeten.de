@@ -24,9 +24,12 @@ for (const t of allTalks) {
 }
 
 const now = Date.now()
+const cutOff = now - 24 * 60 * 60 * 1000
 const dates: Array<string> = Array.from(talksByDate.keys()).toSorted()
-const futureDates = dates.filter((d) => new Date(d).valueOf() >= now)
-const pastDates = dates.filter((d) => new Date(d).valueOf() < now).toReversed()
+const futureDates = dates.filter((d) => new Date(d).valueOf() >= cutOff)
+const pastDates = dates
+  .filter((d) => new Date(d).valueOf() < cutOff)
+  .toReversed()
 
 const futureTalks = allTalks.filter((t) => t.data.date.valueOf() >= now)
 const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
