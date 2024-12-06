@@ -11,17 +11,17 @@
     "format": "prettier --write **/*.astro ."
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.10",
+    "@iconify-json/lucide": "^1.2.18",
     "@iconify-json/mdi": "^1.2.1",
     "add-to-calendar-button": "^2.7.3",
-    "astro": "4.16.7",
-    "astro-icon": "^1.1.1"
+    "astro": "5.0.4",
+    "astro-icon": "^1.1.4"
   },
   "devDependencies": {
     "@types/luxon": "^3.4.2",
-    "@types/node": "^22.8.1",
+    "@types/node": "^22.10.1",
     "luxon": "^3.5.0",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1"
   },
   "prettier": {
