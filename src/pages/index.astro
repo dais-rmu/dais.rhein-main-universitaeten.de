@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content"
 import Layout from "../layouts/Layout.astro"
-import DayCard from "../components/DayCard.astro"
+import DayElegant from "../components/DayElegant.astro"
 import { Icon } from "astro-icon/components"
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
@@ -83,7 +83,7 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
           </div>
           <div class="days-list">
             {futureDates.map((d) => (
-              <DayCard date={d} talks={talksByDate.get(d)} />
+              <DayElegant date={d} talks={talksByDate.get(d)} />
             ))}
           </div>
         </section>
@@ -95,7 +95,7 @@ const addToCalendarDates = JSON.stringify(futureTalks.map(convertToATCB))
           <h2>Past talks</h2>
           <div class="days-list">
             {pastDates.map((d) => (
-              <DayCard date={d} talks={talksByDate.get(d)} />
+              <DayElegant date={d} talks={talksByDate.get(d)} compact />
             ))}
           </div>
         </section>

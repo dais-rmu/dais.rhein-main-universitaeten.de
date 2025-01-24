@@ -3,21 +3,24 @@
  * This component renders an entire "day" of talks
  * in a less boxy style, using the compact version of the university logo.
  */
+import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 import Talk from "./Talk.astro"
 import { defaultCampus, printDate } from "../talk-utils"
-import Image from "astro/components/Image.astro"
 
 interface Props {
+  compact?: boolean
   date: string
   talks: Array<CollectionEntry<"talks">> | undefined
 }
 
-const { date, talks } = Astro.props
+const { compact, date, talks } = Astro.props
 const niceDate = printDate(new Date(date))
 const city = talks && talks[0] && talks[0].data.city
 const campus =
   (talks && talks[0] && talks[0].data.campus) || (city && defaultCampus[city])
+const room = !compact && talks && talks[0] && talks[0].data.room
+const mapURL = talks && talks[0] && talks[0].data.mapURL
 ---
 
 <div class={"talk-day " + (city || "")}>
@@ -29,55 +32,69 @@ const campus =
       <div class="location">
         <Image src={`/compact-${city}.svg`} alt={city} width="20" height="20" />
         <div class="campus">{campus}</div>
+        <div></div>
+        {
+          room && (
+            <div class="room">
+              {room}
+              {mapURL && (
+                <span>
+                  &nbsp;(<a href={mapURL}>show on map</a>)
+                </span>
+              )}
+            </div>
+          )
+        }
       </div>
     </li>
-    {talks && talks.map((t) => <Talk talk={t} />)}
   </ul>
-</div>
+  {talks && talks.map((t) => <Talk talk={t} />)}
 
-<style>
-  a {
-    color: inherit;
-    transition: all 0.2s ease-in-out;
-  }
-  a:is(:hover, :focus) {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  .talks {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .header {
-    padding: 0rem;
-    margin: 0.5rem;
-  }
-  .location {
-    font-size: 0.8rem;
-    display: flex;
-    gap: 0.3rem;
-    align-items: center;
-    margin-top: -0.4rem;
-  }
-  .location img {
-    aspect-ratio: 1;
-  }
-  .date {
-    font-weight: bold;
-    font-size: 1.6rem;
-  }
-  .talk-day.darmstadt {
-    --accent-color: var(--accent-darmstadt);
-  }
-  .talk-day.frankfurt {
-    --accent-color: var(--accent-frankfurt);
-  }
-  .talk-day.mainz {
-    --accent-color: var(--accent-mainz);
-  }
-  .talk-day {
-    border: 2px solid rgb(var(--accent-color));
-    border-radius: 20px;
-    padding-left: 1rem;
-  }
-</style>
+  <style>
+    a {
+      color: inherit;
+      transition: all 0.2s ease-in-out;
+    }
+    a:is(:hover, :focus) {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .talks {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .header {
+      padding: 0rem;
+      margin: 0.5rem;
+    }
+    .location {
+      font-size: 0.8rem;
+      display: grid;
+      column-gap: 0.3rem;
+      align-items: center;
+      grid-template-columns: min-content 1fr;
+    }
+    .location img {
+      aspect-ratio: 1;
+    }
+    .date {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+    .talk-day.darmstadt {
+      --accent-color: var(--accent-darmstadt);
+    }
+    .talk-day.frankfurt {
+      --accent-color: var(--accent-frankfurt);
+    }
+    .talk-day.mainz {
+      --accent-color: var(--accent-mainz);
+    }
+    .talk-day {
+      border-left: 10px solid rgb(var(--accent-color));
+      border-radius: 20px;
+      padding-left: 1rem;
+      background-color: rgba(var(--accent-color), 0.1);
+    }
+  </style>
+</div>
