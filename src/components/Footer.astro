@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components"
+import { Image } from "astro:assets"
 import { execSync } from "child_process"
 const last_mod = execSync(`git log -1 --pretty="format:%as"`)
 ---
@@ -7,19 +8,41 @@ const last_mod = execSync(`git log -1 --pretty="format:%as"`)
 <footer>
   <div class="logos">
     <a href="https://www.rhein-main-universitaeten.de/en"
-      ><img src="/rmu-logo.svg" /></a
+      ><Image
+        alt="RMU Logo"
+        src="/rmu-logo.svg"
+        width="150"
+        height="67.65"
+      /></a
     >
     <a href="https://www.goethe-university-frankfurt.de/"
-      ><img src="/goethe-logo.svg" /></a
+      ><Image
+        alt="Goethe University Logo"
+        src="/goethe-logo.svg"
+        width="150"
+        height="81.73"
+      /></a
     >
-    <a href="https://homepage.uni-mainz.de/"><img src="/jgu-logo.svg" /></a>
+    <a href="https://homepage.uni-mainz.de/"
+      ><Image
+        alt="Mainz University Logo"
+        src="/jgu-logo.svg"
+        width="150"
+        height="77.66"
+      /></a
+    >
     <a href="https://www.tu-darmstadt.de/index.en.jsp"
-      ><img src="/tud-logo.svg" /></a
+      ><Image
+        alt="TU Darmstadt Logo"
+        src="/tud-logo.svg"
+        width="150"
+        height="56.71"
+      /></a
     >
   </div>
   <div class="legal">
     {last_mod} | <a href="https://github.com/goethe-tcs/dais"
-      ><Icon name="mdi:github" /></a
+      ><Icon name="mdi:github" /> GitHub</a
     > |
     <a href="https://tcs.uni-frankfurt.de/legal/">Impressum und Datenschutz</a>
   </div>
