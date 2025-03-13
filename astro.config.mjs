@@ -5,9 +5,7 @@ import rehypeKatex from "rehype-katex"
 
 // https://astro.build/config
 export default defineConfig({
-  markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
-  },
+  site: "https://dais.rhein-main-universitaeten.de",
+  markdown: { remarkPlugins: [remarkMath], rehypePlugins: [rehypeKatex] },
   integrations: [icon()],
 })
