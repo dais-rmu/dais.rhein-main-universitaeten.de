@@ -1,6 +1,6 @@
 ---
 speakerName: Simon Raßmann
-title: Probing twin-width: symmetries, regularity and decompositions 
+title: Probing twin-width - symmetries, regularity and decompositions 
 speakerAffiliation: TU Darmstadt
 date: 2025-07-04 14:15
 duration: 30
