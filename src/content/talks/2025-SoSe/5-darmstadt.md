@@ -8,3 +8,4 @@ date: 2025-07-11 13:00
 city: darmstadt
 mapURL: https://maps.app.goo.gl/cQd2XPLfYMWVdMAn6
 ---
+Testing markdown $a^2$.
