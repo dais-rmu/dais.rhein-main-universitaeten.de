@@ -22,8 +22,8 @@ that the existing typical average-case analyses cannot explain this gap
 between theory and practice. Hence, we study the problem for 
 \emph{structured} matrices.
 We show that for $n\times n$ matrices of VC-dimension $d$, the 
-matrix-vector multiplication problem can be solved with $\tilde{O}(n^2)}$ 
-preprocessing and $\tilde{O}(n^{2-1/d})}$ query time.  Given the low 
+matrix-vector multiplication problem can be solved with $\tilde{O}(n^2)$ 
+preprocessing and $\tilde{O}(n^{2-1/d})$ query time.  Given the low 
 constant VC-dimensions observed in most real-world data, our results 
 posit an explanation for why the problem can be solved so much faster in 
 practice.
