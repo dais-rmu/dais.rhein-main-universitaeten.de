@@ -1,17 +1,33 @@
 ---
-speakerName: Britta Peis
-title: On the Approximability of Train Routing and the MinMax Disjoint Paths Problem
-speakerAffiliation: RWTH Aachen University
-speakerURL: https://www.oms.rwth-aachen.de/cms/oms/der-lehrstuhl/das-team/peis-britta/~mlba/publikationen/
-room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
-date: 2025-07-04 13:00
+speakerName: Jan van den Brand
+title: The Structural Complexity of Matrix-Vector Multiplication
+speakerAffiliation: Georgia Institute of Technology
+date: 2025-07-11 14:15
+duration: 30
 city: darmstadt
-mapURL: https://maps.app.goo.gl/cQd2XPLfYMWVdMAn6
 ---
-In train routing, the headway is the minimum distance that must be maintained between successive trains for safety and robustness. We introduce a model for train routing that requires a fixed headway to be maintained between trains, and study the problem of minimizing the makespan, i.e., the arrival time of the last train, in a single-source single-sink network. For this problem, we first show that there exists an optimal solution where trains move in convoys---that is, the optimal paths for any two trains are either the same or are arc-disjoint.
-Via this insight, we are able to reduce the approximability of our train routing problem to that of the min-max disjoint paths problem, which asks for a collection of disjoint paths where the maximum length of any path in the collection is as small as possible.
+Computing sequential matrix-vector products is one of the most
+fundamental subroutines underlying efficient algorithms for learning,
+optimization, computational geometry, online algorithms, and many other
+fields. We consider the problem of preprocessing an $n\times n$ matrix
+$M$, and then supporting queries that for any vector $v$ returns the
+matrix-vector product $Mv$ faster than naive matrix-vector-multiplication.
+This problem has been extensively studied in both theory and practice,
+revealing a gap in our complexity understanding: on one side,
+practitioners have developed algorithms that are highly efficient in
+practice, whereas on the other side, theoreticians have proven that the
+problem cannot be solved faster than naive multiplication in the
+worst-case. This lower bound holds even in the average-case, implying
+that the existing typical average-case analyses cannot explain this gap
+between theory and practice. Hence, we study the problem for
+\emph{structured} matrices.
+We show that for $n\times n$ matrices of VC-dimension $d$, the
+matrix-vector multiplication problem can be solved with $\widetilde{O}(n^2)$
+preprocessing and $\widetilde{O}(n^{2-1/d})$ query time.  Given the low
+constant VC-dimensions observed in most real-world data, our results
+posit an explanation for why the problem can be solved so much faster in
+practice.
 
-While min-max disjoint paths inherits a strong inapproximability result on directed acyclic graphs from the multi-level bottleneck assignment problem, we show that a natural greedy composition approach yields a logarithmic approximation in the number of disjoint paths for series-parallel graphs.
-We also present an alternative analysis of this approach that yields a guarantee depending on how often the decomposition tree of the series-parallel graph alternates between series and parallel compositions on any root-leaf path.
+Joint work with: Emile Anand and Rose McCarty
 
-(Joint work with Umang Bhaskar, Katharina Eickhoff, Lennart Kauther, Jannik Matuschke, and Laura Vargas Koch)
+
