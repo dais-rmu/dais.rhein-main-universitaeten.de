@@ -2,7 +2,7 @@
 speakerName: Jan van den Brand
 title: The Structural Complexity of Matrix-Vector Multiplication
 speakerAffiliation: Georgia Institute of Technology
-date: 2025-07-11 14:15
+date: 2025-07-04 13:00
 duration: 30
 city: darmstadt
 ---
