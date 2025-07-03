@@ -6,6 +6,7 @@ room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
 date: 2025-07-04 13:00
 duration: 30
 city: darmstadt
+mapURL: https://maps.app.goo.gl/cQd2XPLfYMWVdMAn6
 ---
 Computing sequential matrix-vector products is one of the most
 fundamental subroutines underlying efficient algorithms for learning,
