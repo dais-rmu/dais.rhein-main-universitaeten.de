@@ -37,7 +37,7 @@ jobs:
           options: ""
           ssh_options: ""
           src: "dist/"
-          dest: "dell-from-github@tcs.uni-frankfurt.de:/var/www/html/dais.rhein-main-universitaeten.de/"
+          dest: "dais@fb04c198.mathematik.tu-darmstadt.de:/data/www/webpages/dais/"
 
       - name: Display status from deploy
         run: echo "${{ steps.deploy.outputs.status }}"
