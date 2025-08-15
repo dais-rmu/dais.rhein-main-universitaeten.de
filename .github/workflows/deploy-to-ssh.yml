@@ -28,6 +28,10 @@ jobs:
   #     name: github-pages
   #     url: ${{ steps.deployment.outputs.page_url }}
   #   steps:
+      - name: Check public IP (IPv4)
+        run: curl -s https://api.ipify.org
+      - name: Check public IP (IPv6)
+        run: curl -s https://api64.ipify.org
       - name: Deploy to an SSH server
         id: deploy
         uses: Pendect/action-rsyncer@v2.0.0
