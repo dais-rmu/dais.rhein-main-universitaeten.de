@@ -2,7 +2,7 @@
 speakerName: Markus Anders
 title: Don't Repeat Yourself - Using Symmetry in Practical Algorithms
 speakerAffiliation:  RPTU Kaiserslautern-Landau
-date: 2025-07-11 14:20
+date: 2025-07-11 14:16
 duration: 30
 city: darmstadt
 ---
