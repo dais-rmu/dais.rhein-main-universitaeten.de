@@ -6,6 +6,6 @@ speakerURL: https://ae.iti.kit.edu/english/sanders.php
 date: 2025-11-28 13:00
 city: frankfurt
 room: tba
-mapURL: tba
+mapURL: https://maps.app.goo.gl/GBaDX8DgGaVoXKxs8
 ---
 tba
