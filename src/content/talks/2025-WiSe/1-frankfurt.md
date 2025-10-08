@@ -1,9 +1,9 @@
 ---
-speakerName: Peter Sanders
+speakerName: tba
 title: tba 
-speakerAffiliation: Karlsruhe Institute of Technology (KIT)
-speakerURL: https://ae.iti.kit.edu/english/sanders.php
-date: 2025-11-28 13:00
+speaker tba
+speakerURL: tba
+date: tba
 city: frankfurt
 room: tba 
 mapURL: https://maps.app.goo.gl/GBaDX8DgGaVoXKxs8
