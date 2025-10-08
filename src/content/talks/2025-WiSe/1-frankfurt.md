@@ -1,7 +1,7 @@
 ---
 speakerName: tba
 title: tba 
-speaker tba
+speakerAffiliation: tba
 speakerURL: tba
 date: tba
 city: frankfurt
