@@ -1,7 +1,7 @@
 ---
-speakerName: Marcin Bieńkowski
+speakerName: Marcin Bienkowski
 title: Dynamic graph partitioning: online and offline
-speakerAffiliation: University of Wrocław
+speakerAffiliation: University of Wroclaw
 room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
 date: 2026-03-20 13:00
 duration: 60
