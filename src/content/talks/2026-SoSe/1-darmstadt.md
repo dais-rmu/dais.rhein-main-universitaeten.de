@@ -1,6 +1,6 @@
 ---
 speakerName: Marcin Bienkowski
-title: Dynamic graph partitioning: online and offline
+title: On the Approximability of Train Routing and the MinMax Disjoint Paths Problem
 speakerAffiliation: RWTH Aachen University
 room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
 date: 2026-12-05 13:00
