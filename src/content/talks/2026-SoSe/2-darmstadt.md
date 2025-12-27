@@ -1,8 +1,8 @@
 ---
-speakerName: Ralph Neininger
+speakerName: tba
 title: tba
 speakerAffiliation: tba
-date: 2026-02-20 14:15
+date: 2026-03-20 14:15
 duration: 30
 city: darmstadt
 ---
