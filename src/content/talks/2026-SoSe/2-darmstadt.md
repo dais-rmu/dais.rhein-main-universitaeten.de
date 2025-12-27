@@ -1,9 +1,9 @@
 ---
-speakerName: tba
+speakerName: Ralph Neininger
 title: tba
-speakerAffiliation: tba
-date: 2026-03-20  14:15
+speakerAffiliation: Goethe-Universität Frankfurt
+date: 2026-01-30 14:15
 duration: 30
-city: darmstadt
+city: frankfurt
 ---
 tba
