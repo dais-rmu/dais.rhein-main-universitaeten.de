@@ -1,5 +1,5 @@
 ---
-speakerName: tba
+speakerName: Anand Srivastav
 title: tba
 speakerAffiliation: tba
 date: 2026-07-03 14:15
