@@ -1,6 +1,6 @@
 ---
 speakerName: Peter Sanders
-title: tba 
+title: Engineering Compressed Datastructures
 speakerAffiliation: Karlsruhe Institute of Technology
 date: 2026-07-03 13:00
 duration: 60
