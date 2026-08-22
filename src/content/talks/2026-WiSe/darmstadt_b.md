@@ -1,9 +1,17 @@
 ---
-speakerName: tba
-title: tba
-speakerAffiliation: tba
+speakerName: Nils Mosis
+title: An Unconditional Lower Bound for the Active-Set Method in Convex Quadratic Maximization
+speakerAffiliation: TU Darmstadt
 date: 2026-09-18 14:15
 duration: 30
 city: darmstadt
 ---
+We prove that the active-set method needs an exponential number of iterations in the worst-case to maximize a convex quadratic function subject to linear constraints, regardless of the pivot rule used.
+This substantially improves over the best previously known lower bound [IPCO 2025], which needs objective functions of polynomial degrees~$\omega(\log d)$ in dimension~$d$, to a bound using a convex polynomial of degree~2. 
+In particular, our result firmly resolves the open question [IPCO 2025] of whether a constant degree suffices, and it represents significant progress towards linear objectives, where the active-set method coincides with the simplex method and a lower bound for all pivot rules would constitute a major breakthrough.
 
+Our result is based on a novel extended formulation, recursively constructed using deformed products.
+Its key feature is that it projects onto a polygonal approximation of a parabola while preserving all of its exponentially many vertices.
+We define a quadratic objective that forces the active-set method to follow the parabolic boundary of this projection, without allowing any shortcuts along chords corresponding to edges of its full-dimensional preimage.
+
+This is joint work with Eleon Bach, Yann Disser, and Sophie Huiberts.
