@@ -11,7 +11,7 @@ Usage:
              --out DIR output directory (default: poster/build)
 The SVG itself is always A3; sizes only scale the PDF.
 
-Posters up to 2025-SoSe use layout_old.svg (old RMU logo), later ones layout.svg.
+Posters up to 2025-SoSe use layout_until_2025-SoSe.svg (old RMU logo), later ones layout.svg.
 
 Text that doesn't fit on the page is detected (via Inkscape) and you are asked for a
 shorter version, e.g. "Ecole Polytechnique Federale de Lausanne" -> "EPFL Lausanne".
