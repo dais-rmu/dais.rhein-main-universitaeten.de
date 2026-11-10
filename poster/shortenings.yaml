@@ -1,0 +1,6 @@
+# Shortened texts for the posters, asked for by build.py when a text is too
+# wide. Format: "original text": "short text". Edit or delete freely.
+Ecole Polytechnique Fédérale de Lausanne (EPFL): EPFL Lausanne
+Fraunhofer ITWM and RPTU Kaiserslautern-Landau: |-
+  Fraunhofer ITWM,
+  RPTU Kaiserslautern-Landau
