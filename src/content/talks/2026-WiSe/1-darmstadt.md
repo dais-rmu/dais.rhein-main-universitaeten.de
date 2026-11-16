@@ -3,7 +3,7 @@ speakerName: Nicole Megow
 title: "Resource Allocation with Predictions: Balancing Consistency and Robustness"
 speakerAffiliation: University of Bremen
 room: "Raum S3|13/30 | Schloss Kaisersaalbau, Marktplatz 15, 64283 Darmstadt"
-date: 2026-11-20 13:00
+date: 2026-11-20 13:30
 duration: 60
 city: darmstadt
 mapURL: https://maps.app.goo.gl/cQd2XPLfYMWVdMAn6
